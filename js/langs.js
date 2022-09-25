@@ -1,5 +1,3 @@
-let going = false;
-let currentEl = null;
 const lang_buttons = document.querySelectorAll(".lang-button");
 const lineDownSvg = document.querySelector("#linedown");
 const lineDown = lineDownSvg.firstElementChild;
@@ -8,6 +6,8 @@ const right = document.querySelector("#rectright");
 const details = document.querySelector("#details");
 const langHint = document.querySelector("#langhint");
 const modal = document.querySelector("#modal");
+let going = false;
+let currentEl = null;
 
 if (!window.localStorage.hideClickToLang) {
   langHint.langTimeout = setTimeout(() => {
@@ -55,10 +55,10 @@ for (let button of lang_buttons) {
     lineDown.style.stroke = button.style.color;
     lineDown.style.strokeDashoffset = "-100px";
 
-    // Place exit thingy
+    // Place exit hint
     langHint.style.left = x + "px";
 
-    // Do rectangle path
+    // Rectangle path
     currentEl = button;
     setUpPath();
     undoPath(0.25);
@@ -74,7 +74,7 @@ for (let button of lang_buttons) {
       panel.classList.add("shown");
       going = false;
 
-      // Animate all the children
+      // Animate children
       let divs = panel.querySelectorAll(".projects>.proj");
       let timeout = 200;
       for (let div of divs) {
@@ -83,7 +83,7 @@ for (let button of lang_buttons) {
       }
     }, 500);
 
-    // exit thingy timeout
+    // exit timeout
     if (!window.localStorage.hideClickToExit) {
       langHint.exitTimeout = setTimeout(() => {
         langHint.innerText = "(click again to exit)";
@@ -95,7 +95,6 @@ for (let button of lang_buttons) {
 
 function setUpPath() {
   let x = currentEl.offsetLeft + currentEl.clientWidth / 2;
-
   x -= 20;
   let h =
     window.innerHeight - left.parentElement.getBoundingClientRect().y - 20;
@@ -104,21 +103,19 @@ function setUpPath() {
   // Create svg paths
   left.setAttribute(
     "d",
-    `M ${x + 2},0
-							C 100,0 40,0 40,0
-							40,0 0,0 0,40
-							0,40 0,60 0,${h - 40}
-							0,${h - 40} 0,${h} 40,${h}
-							93.75,${h} 100,${h} ${x2},${h}`
+    `M ${x + 2},0 C 100,0 40,0 40,0 40,0 0,0 0,40 0,40 0,60 0,${h - 40} 0,${
+      h - 40
+    } 0,${h} 40,${h} 93.75,${h} 100,${h} ${x2},${h}`
   );
   right.setAttribute(
     "d",
-    `M -2,0
-							 C -2,0 ${x2 - 40},0 ${x2 - 40},0
-							 ${x2 - 40},0 ${x2},0 ${x2},40
-							 ${x2},40 ${x2},60 ${x2},${h - 40}
-							 ${x2},${h - 40} ${x2},${h} ${x2 - 40},${h}
-							 ${x2 - x + 40},${h} ${x2 - x},${h} ${x2 - x},${h}`
+    `M -2,0 C -2,0 ${x2 - 40},0 ${x2 - 40},0 ${
+      x2 - 40
+    },0 ${x2},0 ${x2},40 ${x2},40 ${x2},60 ${x2},${h - 40} ${x2},${
+      h - 40
+    } ${x2},${h} ${x2 - 40},${h} ${x2 - x + 40},${h} ${x2 - x},${h} ${
+      x2 - x
+    },${h}`
   );
   right.style.transform = `translateX(${x + 1}px) translateY(1px)`;
   // Reset everything
@@ -133,7 +130,7 @@ function doPath(color) {
   left.style.stroke = color;
   right.style.stroke = color;
 
-  // Do animation
+  // animation
   left.style.transition = "stroke-dashoffset .75s ease-in-out";
   right.style.transition = "stroke-dashoffset .75s ease-in-out";
   left.style.strokeDashoffset = "0";
@@ -142,10 +139,12 @@ function doPath(color) {
 
 function undoPath(seconds) {
   let len = left.getTotalLength();
-  left.style.transition = `stroke-dashoffset ${seconds}s ease-in-out`;
-  right.style.transition = `stroke-dashoffset ${seconds}s ease-in-out`;
-  left.style.strokeDashoffset = len;
-  right.style.strokeDashoffset = len;
+  let style = {
+    transition: `stroke-dashoffset ${seconds}s ease-in-out`,
+    strokeDashoffset: len,
+  };
+  Object.assign(left.style, style);
+  Object.assign(right.style, style);
 
   // Hide current panel
   let shownPanel = document.querySelector(".lang-panel.shown");
@@ -191,9 +190,9 @@ for (let p of projs) {
   });
 }
 
-modal.querySelector(".close").addEventListener("click", () => {
-  modal.classList.remove("shown");
-});
+modal
+  .querySelector(".close")
+  .addEventListener("click", () => modal.classList.remove("shown"));
 
 const projectDivs = document.querySelectorAll(".projects");
 

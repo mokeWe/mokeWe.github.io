@@ -6,9 +6,11 @@ let anim = [
   { t: "/mok/", ms: 300 },
   { t: "/moke/", ms: 200 },
 ];
+
 let stepDenominator = 1;
 if (window.localStorage.stepDenominator)
   stepDenominator = window.localStorage.stepDenominator;
+
 let i = 0;
 let update = () => {
   let step = anim[i];

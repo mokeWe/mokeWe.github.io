@@ -10,4 +10,10 @@ const ProjectData = {
     description:
       "This project was just to experiment with Python and local packet capture. Pyket was made almost entirely in an afternoon",
   },
+  Mokesite: {
+    title: "Mokesite",
+    github: "",
+    description:
+      "This website. I made it to learn more about web development and to have a place to put my projects.",
+  },
 };

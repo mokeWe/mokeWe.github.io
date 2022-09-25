@@ -17,6 +17,7 @@ globe = new ENCOM.Globe(
     viewAngle: 0.1,
   }
 );
+
 document.getElementById("details").appendChild(globe.domElement);
 
 function animate() {
@@ -25,6 +26,7 @@ function animate() {
   }
   requestAnimationFrame(animate);
 }
+
 let initGlobe = () => {
   globe.init();
   animate();
@@ -53,6 +55,7 @@ let initGlobe = () => {
 
   globe.addConstellation(constellation, opts);
 };
+
 window.addEventListener("resize", () => {
   let h = window.innerHeight - (main.clientTop + main.clientHeight);
   globe.camera.aspect = window.innerWidth / h;
