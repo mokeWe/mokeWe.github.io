@@ -19,25 +19,19 @@
 	<link rel="stylesheet" href="css/perfect-scrollbar.css">
 	<script src="js/perfect-scrollbar.min.js" type="text/javascript"></script>
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112279351-2"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'UA-112279351-2');
-	</script>
 </head>
 
 <body>
 	<h1 id="intro">//</h1>
 	<div id="main">
-		<h2>I'm a <span id="age"></span> year-old developer.</h2>
+		<h2>I am a <span id="age"></span> year old developer.</h2>
 		<h2>
 			<br><br>
-			<span class="lang-button" style="color:#7800da;" data-panel="aboutme">About me<span class="underline" 
+			<span class="lang-button" style="color:#7800da;" data-panel="aboutme">About me.<span class="underline" 
 				style="background-color:#764bec;"></span> </span>
+
+			<span class="lang-button" style="color:#00d9ff;" data-panel="projects">Projects.<span class="underline"
+					style="background-color:#24bdd8;"></span> </span>
 		</h2>
 		<svg id="linedown">
 			<line x1=0 y1=0 x2=0 y2=100>
@@ -47,23 +41,30 @@
 			<path id="rectleft" />
 			<path id="rectright" />
 		</svg>
+
 		<div id="aboutme" class="lang-panel">
-			<h2><a href="https://github.com/mokeWe" target="_blank">About Me</a></h2>
-			<h3 class="lang-desc">I'm a <span> 16 </span> year-old developer.
-				I've been coding on and off for about <span>6 years</span> now. I'm nowhere near being an expert at anything, 
-				but I consider myself to be quite <span>decent</span>.
-
+			<h2>About Me.</h2>
+			<h3 class="lang-desc">
+				I am <span>16</span> years old.
+				I've been programming on and off for about <span>6 years</span>. I'm nowhere near being an expert, 
+				but I consider myself to be quite <span>proficient</span>.
 				<br><br>
-
-				I first began learning C# when I was 10, 
-				after a couple of years I decided to primarily use <span>Python</span> and garnered an interest in machine learning.
+				I first began learning <span>C#</span> when I was 10,
+				after a couple years I decided to switch to <span>Python</span> as my primary language and 
+				recently garnered an interest in machine learning/artificial intelligence.
 				I also know a bit of <span>Java, C++, HTML, CSS, and JavaScript.</span></h3>
+		</div>
 
+		<div id="projects" class="lang-panel">
+			<h2>My Projects</h2>
+			<h3 class="lang-desc">
+				Here are a couple of my projects, none of them are particularly impressive, 
+				but it's something.
 				<br><br>
+				Feel free to <span><a href="https://github.com/mokeWe" target="_blank">star them on GitHub</a></span> if you like them.
 
-				<h2>Check out some of my projects.</h2>
-
-			<div class="projects aboutme">
+			</h3>
+			<div class="projects projectlist">
 				<div data-proj="Pyket" class="proj" style="background-image: url(img/packet.png)">
 					<h3>Pyket</h3>
 				</div>
@@ -75,11 +76,13 @@
 				</div>
 			</div>
 		</div>
+		
 		<div id="details">
-			<h2>Also check out my <a href="https://github.com/mokeWe" class="d" target="_blank"
+			<h2>Check out my <a href="https://github.com/mokeWe" class="d" target="_blank"
 					style="color:#7800da;">GitHub<span class="underline" style="background-color:#764bec;"></span></a>
 			</h2>
 		</div>
+		
 		<div id="modal" style=>
 			<h2></h2>
 			<p></p>

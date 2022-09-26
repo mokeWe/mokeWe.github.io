@@ -26,6 +26,7 @@ for (let button of lang_buttons) {
     window.localStorage.hideClickToLang = true;
     clearTimeout(langHint.exitTimeout);
 
+    // Show current panel
     if (button.className.includes("active")) {
       button.className = "lang-button";
       undoPath(0.5);
@@ -43,11 +44,11 @@ for (let button of lang_buttons) {
       return;
     }
 
-    // Remove underline from old lang
+    // Remove underline from old lang button
     if (currentEl) currentEl.className = "lang-button";
     button.className = "lang-button active";
 
-    // Do line down animation
+    // Line down animation
     let x = button.offsetLeft + button.clientWidth / 2;
     lineDownSvg.style.left = x + "px";
     lineDownSvg.style.opacity = "1";
@@ -118,6 +119,7 @@ function setUpPath() {
     },${h}`
   );
   right.style.transform = `translateX(${x + 1}px) translateY(1px)`;
+
   // Reset everything
   let len = left.getTotalLength();
   left.style.transition = "initial";
@@ -177,11 +179,6 @@ for (let p of projs) {
       width: modal.clientWidth,
       height: modal.clientHeight,
       x_colors: [
-        "#000000",
-        "#1a1a1a",
-        "#333333",
-        "#4d4d4d",
-        "#333333",
         "#1a1a1a",
         "#000000",
       ],
@@ -201,13 +198,16 @@ function updateProjectDivHeights() {
     div.style.height =
       window.innerHeight - div.getBoundingClientRect().y - 30 + "px";
   }
+
   for (let bar of scrollbars) {
     bar.update();
   }
 }
+
 let scrollbars = Array.from(document.querySelectorAll(".projects")).map(
   (bar) => new PerfectScrollbar(bar)
 );
+
 window.addEventListener("resize", () => {
   if (currentEl) setUpPath();
   updateProjectDivHeights();

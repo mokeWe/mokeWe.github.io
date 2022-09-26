@@ -1,10 +1,19 @@
 let header = document.querySelector("#intro");
 let anim = [
-  { t: "//", ms: 400 },
-  { t: "/m/", ms: 300 },
-  { t: "/mo/", ms: 300 },
-  { t: "/mok/", ms: 300 },
+  { t: "/ /", ms: 300 },
+  { t: "/_/", ms: 300 },
+  { t: "/ /", ms: 300 },
+  { t: "/_/", ms: 300 },
+  { t: "/ /", ms: 300 },
+  { t: "/_/", ms: 300 },
+  { t: "/ /", ms: 300 },
+  { t: "/_/", ms: 300 },
+  { t: "/ /", ms: 300 },
+  { t: "/m/", ms: 200 },
+  { t: "/mo/", ms: 200 },
+  { t: "/mok/", ms: 200 },
   { t: "/moke/", ms: 200 },
+  { t: "/moke/", ms: 500 },
 ];
 
 let stepDenominator = 1;

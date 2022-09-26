@@ -116,6 +116,10 @@ a.d {
   color: #a748ff;
 }
 
+#projects > .lang-desc > span {
+  color: #00d9ff;
+}
+
 #details {
   margin-top: 50px;
   opacity: 1;
@@ -214,18 +218,18 @@ canvas {
     height 0.125s ease-out 0.325s, border-radius 0.5s ease-out 0.5s;
 }
 
-.projects.aboutme > .proj.loaded::before {
-  border-top-color: #7800da;
-  border-right-color: #7800da;
+.projects.projectlist > .proj.loaded::before {
+  border-top-color: #00d9ff;
+  border-right-color: #00d9ff;
 }
 
-.projects.aboutme > .proj.loaded::after {
-  border-bottom-color: #7800da;
-  border-left-color: #7800da;
+.projects.projectlist > .proj.loaded::after {
+  border-bottom-color: #00d9ff;
+  border-left-color: #00d9ff;
 }
 
-.projects.aboutme > .proj {
-  border-color: #7800da;
+.projects.projectlist > .proj {
+  border-color: #00d9ff;
 }
 
 /* modal */
@@ -237,7 +241,7 @@ canvas {
   z-index: 1000;
   background: #000000d0;
   border-radius: 20px;
-  border: 2px solid rgb(67, 14, 190);
+  border: 2px solid #00d9ff;
   width: 90vw;
   height: 70vh;
   left: 50%;
@@ -246,10 +250,6 @@ canvas {
   transform: translateX(-50%) translateY(-50%);
   overflow: hidden;
   box-shadow: 0 0 100px 10px black inset;
-}
-#modal.aboutme,
-#modal.aboutme > .close {
-  border-color: #90c53f;
 }
 
 #modal.shown {
@@ -277,7 +277,7 @@ canvas {
   width: 40px;
   line-height: 20px;
   margin: 0;
-  border: 2px solid rgb(67, 14, 190);
+  border: 2px solid #00d9ff;
   border-top-color: transparent !important;
   border-right-color: transparent !important;
   border-bottom-left-radius: 20px;
