@@ -178,10 +178,7 @@ for (let p of projs) {
     var pattern = Trianglify({
       width: modal.clientWidth,
       height: modal.clientHeight,
-      x_colors: [
-        "#1a1a1a",
-        "#000000",
-      ],
+      x_colors: ["#1a1a1a", "#000000"],
     });
     modal.style.background = "url(" + pattern.png() + ")";
   });

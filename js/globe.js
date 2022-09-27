@@ -7,14 +7,14 @@ globe = new ENCOM.Globe(
     tiles: grid.tiles,
     baseColor: "#000000",
     markerColor: "#5936d8",
-    pinColor: "#aacfd1",
+    pinColor: "#5936d8",
     satelliteColor: "#aacfd1",
-    scale: 1,
+    scale: 0.99,
     dayLength: 14000,
     introLinesDuration: 2000,
-    maxPins: 500,
+    maxPins: 10,
     maxMarkers: 4,
-    viewAngle: 0.1,
+    viewAngle: 0.2,
   }
 );
 
@@ -34,11 +34,12 @@ let initGlobe = () => {
     .then((r) => r.text())
     .then((r) => {
       let loc = JSON.parse(r);
-      globe.addMarker(loc.latitude, loc.longitude, loc.ip);
+      let name = "YOU: " + loc.ip
+      globe.addMarker(loc.latitude, loc.longitude, name);
     });
   var constellation = [];
   var opts = {
-    coreColor: "#ff0000",
+    coreColor: "#5936d8",
     numWaves: 8,
   };
   var alt = 1;
@@ -52,6 +53,14 @@ let initGlobe = () => {
       });
     }
   }
+
+  setInterval(function () {
+    var lat = Math.random() * 180 - 90,
+      lon = Math.random() * 360 - 180,
+      name = "" + Math.floor(Math.random() * 100);
+
+    globe.addPin(lat, lon, name);
+  }, 2500);
 
   globe.addConstellation(constellation, opts);
 };
