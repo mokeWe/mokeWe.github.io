@@ -31,7 +31,6 @@ let update = () => {
     header.classList.add("top");
     setTimeout(() => {
       document.getElementById("main").style.opacity = 1;
-      initGlobe();
     }, 500);
     window.localStorage.stepDenominator = 2;
   }

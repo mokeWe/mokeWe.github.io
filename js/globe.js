@@ -1,65 +1,31 @@
-globe = new ENCOM.Globe(
-  window.innerWidth,
-  window.innerHeight - (main.clientTop + main.clientHeight),
-  {
-    font: "Inconsolata",
-    data: [],
-    tiles: grid.tiles,
-    baseColor: "#000000",
-    markerColor: "#5936d8",
-    pinColor: "#5936d8",
-    satelliteColor: "#aacfd1",
-    scale: 1,
-    dayLength: 14000,
-    introLinesDuration: 2000,
-    maxPins: 10,
-    maxMarkers: 4,
-    viewAngle: 0.2,
-  }
-);
+import createGlobe from "./cobeglobe/cobe.js";
 
-document.getElementById("details").appendChild(globe.domElement);
+let phi = 0;
+let canvas = document.getElementById("cobe");
+let details = document.getElementById("details");
+details.appendChild(canvas);
 
-function animate() {
-  if (globe) {
-    globe.tick();
-  }
-  requestAnimationFrame(animate);
-}
+const globe = createGlobe(canvas, {
+  devicePixelRatio: 2,
+  width: 1000,
+  height: 1000,
+  phi: 0,
+  theta: 0,
+  dark: 1,
+  diffuse: 1.15,
+  scale: 1,
+  mapSamples: 16000,
+  mapBrightness: 3,
+  baseColor: [30 / 100, 0.0, 72 / 100],
+  markerColor: [1, 0.5, 1],
+  glowColor: [99 / 100, 0.0, 255 / 100],
+  offset: [0, 0],
+  opacity: 0.6,
 
-let initGlobe = () => {
-  globe.init();
-  animate();
-  fetch("https://ip-api.io/json")
-    .then((r) => r.text())
-    .then((r) => {
-      let loc = JSON.parse(r);
-      let name = "YOU: " + loc.ip;
-      globe.addMarker(loc.latitude, loc.longitude, name);
-    });
-  var constellation = [];
-  var opts = {
-    coreColor: "#5936d8",
-    numWaves: 8,
-  };
-  var alt = 1;
+  markers: [],
 
-  for (var i = 0; i < 2; i++) {
-    for (var j = 0; j < 3; j++) {
-      constellation.push({
-        lat: 50 * i - 30 + 15 * Math.random(),
-        lon: 120 * j - 120 + 30 * i,
-        altitude: alt,
-      });
-    }
-  }
-
-  globe.addConstellation(constellation, opts);
-};
-
-window.addEventListener("resize", () => {
-  let h = window.innerHeight - (main.clientTop + main.clientHeight);
-  globe.camera.aspect = window.innerWidth / h;
-  globe.camera.updateProjectionMatrix();
-  globe.renderer.setSize(window.innerWidth, h);
+  onRender: (state) => {
+    state.phi = phi;
+    phi += 0.005;
+  },
 });
