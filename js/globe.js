@@ -43,6 +43,7 @@ canvas.addEventListener("mousedown", (e) => {
 
   const mouseup = (e) => {
     dragging = false;
+    canvas.style.cursor = "grab";
     canvas.removeEventListener("mousemove", mousemove);
     canvas.removeEventListener("mouseup", mouseup);
   };
