@@ -21,11 +21,33 @@ const globe = createGlobe(canvas, {
   glowColor: [99 / 100, 0.0, 255 / 100],
   offset: [0, 0],
   opacity: 0.6,
-
   markers: [],
-
   onRender: (state) => {
     state.phi = phi;
-    phi += 0.005;
+    phi += 0.002;
   },
+});
+
+canvas.style.cursor = "grab";
+canvas.addEventListener("mousedown", (e) => {
+  let x = e.clientX;
+  let dragging = true;
+
+  const mousemove = (e) => {
+    if (dragging) {
+      canvas.style.cursor = "grabbing";
+      phi += (e.clientX - x) / 150;
+      x = e.clientX;
+    }
+  };
+
+  const mouseup = (e) => {
+    dragging = false;
+    canvas.removeEventListener("mousemove", mousemove);
+    canvas.removeEventListener("mouseup", mouseup);
+  };
+
+  canvas.addEventListener("mousemove", mousemove);
+  canvas.addEventListener("mouseup", mouseup);
+  canvas.addEventListener("mouseleave", mouseup);
 });
