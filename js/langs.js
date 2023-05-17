@@ -96,39 +96,35 @@ for (let button of lang_buttons) {
 
 function setUpPath() {
   try {
-    let x = currentEl.offsetLeft + currentEl.clientWidth / 2;
-    x -= 20;
-    let h =
+    const x = currentEl.offsetLeft + currentEl.clientWidth / 2 - 20;
+    const h =
       window.innerHeight - left.parentElement.getBoundingClientRect().y - 20;
-    let x2 = window.innerWidth - x - 40;
+    const x2 = window.innerWidth - x - 40;
 
-    // Create svg paths
-    left.setAttribute(
-      "d",
-      `M ${x + 2},0 C 100,0 40,0 40,0 40,0 0,0 0,40 0,40 0,60 0,${h - 40} 0,${
-        h - 40
-      } 0,${h} 40,${h} 93.75,${h} 100,${h} ${x2},${h}`
-    );
-    right.setAttribute(
-      "d",
-      `M -2,0 C -2,0 ${x2 - 40},0 ${x2 - 40},0 ${
-        x2 - 40
-      },0 ${x2},0 ${x2},40 ${x2},40 ${x2},60 ${x2},${h - 40} ${x2},${
-        h - 40
-      } ${x2},${h} ${x2 - 40},${h} ${x2 - x + 40},${h} ${x2 - x},${h} ${
-        x2 - x
-      },${h}`
-    );
+    const leftPath = `M ${
+      x + 2
+    },0 C 100,0 40,0 40,0 40,0 0,0 0,40 0,40 0,60 0,${h - 40} 0,${
+      h - 40
+    } 0,${h} 40,${h} 93.75,${h} 100,${h} ${x2},${h}`;
+    const rightPath = `M -2,0 C -2,0 ${x2 - 40},0 ${x2 - 40},0 ${
+      x2 - 40
+    },0 ${x2},0 ${x2},40 ${x2},40 ${x2},60 ${x2},${h - 40} ${x2},${
+      h - 40
+    } ${x2},${h} ${x2 - 40},${h} ${x2 - x + 40},${h} ${x2 - x},${h} ${
+      x2 - x
+    },${h}`;
+
+    left.setAttribute("d", leftPath);
+    right.setAttribute("d", rightPath);
     right.style.transform = `translateX(${x + 1}px) translateY(1px)`;
 
-    // Reset everything
-    let len = left.getTotalLength();
+    const len = left.getTotalLength();
     left.style.transition = "initial";
     left.style.strokeDasharray = len;
     right.style.transition = "initial";
     right.style.strokeDasharray = len;
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.error(error);
   }
 }
 
