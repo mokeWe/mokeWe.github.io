@@ -120,6 +120,10 @@ a.d {
   color: #00d9ff;
 }
 
+#contact > .lang-desc > span {
+  color: #ff00ff;
+}
+
 #details {
   margin-top: 50px;
   opacity: 1;
